@@ -14,6 +14,7 @@
 ## API
 
 Описан в `swagger/swagger.json`.
+Документация и работа при запуске доступна по адресу: http://localhost:3000/api-docs/#/default/post_upload
 
 Пример вызова:
 
@@ -30,32 +31,32 @@
 ## Установка и запуск локально
 
 ```bash
-git clone https://github.com/yourname/html-to-pdf-service.git
-cd html-to-pdf-service
+git clone https://github.com/kxxdev/ConvertHTMLtoPDF.git
+cd ConvertHTMLtoPDF
 npm install
 npm run build
 npm start
 ```
 
-### Запуск в Docker
+## Запуск в Docker
 
-## 1. Соберите образ:
-
-```
-docker build -t html-to-pdf-service .
-```
-
-## 2. Запустите контейнер:
+### 1. Соберите образ:
 
 ```
-docker run -p 3000:3000 -v "$(pwd)/logs:/app/logs" -v "$(pwd)/uploads:/app/uploads" html-to-pdf-service
+docker build -t converthtmltopdf https://github.com/kxxdev/ConvertHTMLtoPDF.git#main
 ```
 
-## 3. Теперь сервис доступен по адресу:
+### 2. Запустите контейнер:
+
+```
+docker run -p 3000:3000 -v "$(pwd)/logs:/app/logs" -v "$(pwd)/uploads:/app/uploads" converthtmltopdf
+```
+
+### 3. Теперь сервис доступен по адресу:
 
 http://localhost:3000/upload
 
-### Структура проекта
+## Структура проекта
 
 - `src/routes` — Роуты Express
 - `src/middleware` — Middleware, включая валидацию ZIP
@@ -65,7 +66,7 @@ http://localhost:3000/upload
 - `uploads/` — Временные файлы (автоматически очищаются)
 - `logs/` — Файлы логов
 
-### Технологии
+## Технологии
 
 - Node.js + Express
 - TypeScript
