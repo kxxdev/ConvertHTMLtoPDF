@@ -1,0 +1,42 @@
+{
+  "name": "html-to-pdf-service",
+  "version": "1.0.0",
+  "description": "Микросервис для конвертации HTML (в виде ZIP архива) в PDF. Принимает ZIP, извлекает HTML и ресурсы, и возвращает PDF-файл.",
+  "main": "dist/app.js",
+  "scripts": {
+    "start": "node dist/app.js",
+    "dev": "ts-node-dev src/app.ts",
+    "build": "tsc"
+  },
+  "keywords": [
+    "html",
+    "pdf",
+    "converter",
+    "zip",
+    "puppeteer",
+    "express",
+    "typescript"
+  ],
+  "author": "Artem Gostischev",
+  "license": "MIT",
+  "dependencies": {
+    "adm-zip": "^0.5.16",
+    "express": "^5.1.0",
+    "multer": "^1.4.5-lts.2",
+    "puppeteer": "^24.6.1",
+    "swagger-ui-express": "^5.0.1",
+    "typescript": "^5.8.3",
+    "uniqid": "^5.4.0",
+    "winston": "^3.17.0"
+  },
+  "devDependencies": {
+    "@types/adm-zip": "^0.5.7",
+    "@types/express": "^5.0.1",
+    "@types/html-pdf": "^3.0.3",
+    "@types/multer": "^1.4.12",
+    "@types/node": "^22.14.1",
+    "@types/swagger-ui-express": "^4.1.8",
+    "@types/uniqid": "^5.3.4",
+    "ts-node-dev": "^2.0.0"
+  }
+}

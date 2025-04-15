@@ -1,0 +1,51 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "HTML to PDF Converter API",
+    "version": "1.0.0",
+    "description": "API для загрузки ZIP архива с HTML-файлом, стилями к нему и изображениями с последующей конвертацией их в PDF. \n\nZIP архив должен содержать файл .html, либо вложенную папку с файлом .html"
+  },
+  "paths": {
+    "/upload": {
+      "post": {
+        "summary": "Загрузка ZIP архива HTML",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "multipart/form-data": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "filedata": {
+                    "type": "string",
+                    "format": "binary"
+                  }
+                },
+                "required": ["filedata"]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "PDF файл успешно сгенерирован и возвращён",
+            "content": {
+              "application/pdf": {
+                "schema": {
+                  "type": "string",
+                  "format": "binary"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Ошибка загрузки файла"
+          },
+          "500": {
+            "description": "Серверная ошибка"
+          }
+        }
+      }
+    }
+  }
+}
