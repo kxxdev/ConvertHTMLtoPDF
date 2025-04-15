@@ -36,7 +36,6 @@ uploadRouter.post(
   "/",
   multer({
     storage: storageConfig,
-    limits: { fileSize: MAX_FILE_SIZE },
   }).single("filedata"),
   zipValidationMiddleware,
   async (req: Request, res: Response, next: NextFunction) => {
@@ -87,6 +86,9 @@ uploadRouter.post(
         res,
         code: 500,
         err,
+        filename: req.file ? bufferOriginalname(req.file.filename) : null,
+        startMemory: startMemory,
+        startTime: startTime,
         json: true,
         loggerType: LoggerTypes.Error,
       });
